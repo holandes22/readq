@@ -1,14 +1,14 @@
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  link(i) {
-    return `http:\/\/a${i}.com`;
+  link() {
+    return faker.internet.url();
   },
   archived() {
     return faker.random.boolean();
   },
-  notes(i) {
-    return `some notes for ${i}`;
+  notes() {
+    return faker.lorem.sentence();
   },
   createdAt() {
     return faker.date.recent();

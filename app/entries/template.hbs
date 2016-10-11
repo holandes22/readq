@@ -1,4 +1,24 @@
+<div class="ui very relaxed animated list">
 {{#each model as |entry|}}
-  <div>{{entry.link}}</div>
+  <div class="item">
+    <div class="right floated content">
+      <div class="ui red icon button"><i class="remove icon"></i></div>
+      <div class="ui blue icon button"><i class="edit icon"></i></div>
+    </div>
+    <i class="{{if entry.archived 'archive' 'linkify'}} large icon"></i>
+    <div class="content">
+      <a class="header">{{entry.link}}</a>
+      <div class="description">{{entry.notes}}</div>
+      Created {{moment-from-now entry.createdAt}} |
+
+      {{#each entry.tags as |tag|}}
+        <div class="ui violet basic label">{{tag}}</div>
+      {{else}}
+        <div class="ui label">Untagged</div>
+      {{/each}}
+    </div>
+  </div>
 {{/each}}
 {{outlet}}
+
+</div>
