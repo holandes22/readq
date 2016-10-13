@@ -1,0 +1,32 @@
+<form class="ui form">
+  <h4 class="ui dividing header">Entry</h4>
+  <div class="field">
+    <label>Link</label>
+    <input
+      data-test-link
+      value={{changeset.link}}
+      oninput={{action (mut changeset.link) value="target.value"}}>
+  </div>
+
+  <div class="field">
+    <label>Notes</label>
+    {{input name="notes" value=changeset.notes}}
+  </div>
+
+  <div class="inline field">
+    <div class="ui toggle checkbox">
+      {{input type="checkbox" name="archived" checked=changeset.archived}}
+      <label>Archived?</label>
+    </div>
+  </div>
+
+</form>
+<h5>Tags</h5>
+<div class="divider"></div>
+{{!--
+{{tag-picker tags=tags add=(action "addTag") remove=(action "removeTag")}}
+--}}
+<br>
+<br>
+<button class="ui blue button" data-test-save-btn {{action "save"}}>Save</button>
+<button class="ui blue button" data-test-cancel-btn {{action "rollback"}}>Cancel</button>

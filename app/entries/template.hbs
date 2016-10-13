@@ -1,9 +1,13 @@
+{{link-to "New" "entries.new"}}
+
 <div class="ui very relaxed animated list">
 {{#each model as |entry|}}
   <div class="item">
     <div class="right floated content">
       <div class="ui red icon button"><i class="remove icon"></i></div>
-      <div class="ui blue icon button"><i class="edit icon"></i></div>
+      {{#link-to "entries.entry.edit" entry class="ui blue icon button"}}
+        <i class="edit icon"></i>
+      {{/link-to}}
     </div>
     <i class="{{if entry.archived 'archive' 'linkify'}} large icon"></i>
     <div class="content">

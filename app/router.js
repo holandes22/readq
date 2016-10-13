@@ -8,6 +8,8 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('entries');
+  this.route('entries.new', { path: 'entries/new' });
+  this.route('entries.entry.edit', { path: 'entries/:entry_id/edit' });
 });
 
 export default Router;
