@@ -7,8 +7,11 @@ export default Factory.extend({
   archived() {
     return faker.random.boolean();
   },
-  notes() {
-    return faker.lorem.sentence();
+  notes(i) {
+    if (i % 3 === 0) {
+      return faker.lorem.sentence();
+    }
+    return null;
   },
   createdAt() {
     return faker.date.recent();
