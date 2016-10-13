@@ -5,7 +5,8 @@ export default function() {
   this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   this.get('/entries');
-  this.get('/entries/:id');
   this.post('/entries');
+  this.get('/entries/:id');
   this.patch('/entries/:id');
+  this.delete('/entries/:id');
 }

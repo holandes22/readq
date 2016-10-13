@@ -1,10 +1,29 @@
 {{link-to "New" "entries.new"}}
 
+{{#ui-modal class="basic confirm" onApprove=(route-action 'approveModal') onDeny=(route-action 'denyModal')}}
+<i class="close icon"></i>
+<div class="header">Remove entry?</div>
+  <div class="actions">
+    <div class="two fluid ui inverted buttons">
+      <div class="ui cancel basic inverted button">
+        <i class="remove icon"></i>
+        Cancel
+      </div>
+      <div class="ui ok red basic inverted button">
+        <i class="checkmark icon"></i>
+        Yes, delete
+      </div>
+    </div>
+  </div>
+{{/ui-modal}}
+
 <div class="ui very relaxed animated list">
 {{#each model as |entry|}}
   <div class="item">
     <div class="right floated content">
-      <div class="ui red icon button"><i class="remove icon"></i></div>
+      <div class="ui red icon button" onclick={{route-action 'openModal' 'confirm' entry}}>
+        <i class="trash outline icon"></i>
+      </div>
       {{#link-to "entries.entry.edit" entry class="ui blue icon button"}}
         <i class="edit icon"></i>
       {{/link-to}}
