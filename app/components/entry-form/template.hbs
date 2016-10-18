@@ -1,4 +1,5 @@
 <form class="ui form {{if changeset.isInvalid 'error'}}">
+
   <h4 class="ui dividing header">Entry</h4>
   <div class="field {{if changeset.error.link 'error'}}">
     <label>Link</label>
@@ -17,13 +18,12 @@
     </div>
   </div>
 
+  <div class="field">
+    <label>Tags (csv)</label>
+    {{validated-input propertyName="tags" changeset=changeset transform=csvToArray}}
+  </div>
+
+  <button class="ui blue button" data-test-save-btn {{action "save"}}>Save</button>
+  <button class="ui blue button" data-test-cancel-btn {{action "rollback"}}>Cancel</button>
+
 </form>
-<h5>Tags</h5>
-<div class="divider"></div>
-{{!--
-{{tag-picker tags=tags add=(action "addTag") remove=(action "removeTag")}}
---}}
-<br>
-<br>
-<button class="ui blue button" data-test-save-btn {{action "save"}}>Save</button>
-<button class="ui blue button" data-test-cancel-btn {{action "rollback"}}>Cancel</button>

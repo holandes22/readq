@@ -18,6 +18,7 @@ export default Ember.Route.extend({
       let hash = changeset.getProperties(attrs);
 
       this.store.createRecord('entry', hash).save();
+      this.transitionTo('entries');
     },
 
     rollback(changeset) {

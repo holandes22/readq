@@ -1,4 +1,6 @@
-{{input value=(mut (get changeset propertyName))}}
+{{one-way-input
+  value=(get changeset propertyName)
+  update=(action "update")}}
 {{#if (get changeset.error propertyName)}}
 <div class="ui error message">
   <ul>
