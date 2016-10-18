@@ -1,4 +1,7 @@
 import Ember from 'ember';
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import EntryValidations from 'readq/validations/entry';
 
 export default Ember.Route.extend({
 
@@ -10,6 +13,11 @@ export default Ember.Route.extend({
       createdAt: '',
       tags: []
     };
+  },
+
+  setupController(controller, model) {
+    let changeset = new Changeset(model, lookupValidator(EntryValidations));
+    controller.set('changeset', changeset);
   },
 
   actions: {
