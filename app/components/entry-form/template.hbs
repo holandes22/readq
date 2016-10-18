@@ -24,6 +24,13 @@
   </div>
 
   <button class="ui blue button" data-test-save-btn {{action "save"}}>Save</button>
-  <button class="ui blue button" data-test-cancel-btn {{action "rollback"}}>Cancel</button>
+  <button class="ui blue button" data-test-cancel-btn {{action (route-action "cancel")}}>
+    Cancel
+  </button>
+  {{#if (or changeset.isDirty changeset.isInvalid)}}
+  <button class="circular ui icon basic blue button" {{action (route-action "rollback" changeset)}}>
+    <i class="icon undo"></i>
+  </button>
+  {{/if}}
 
 </form>

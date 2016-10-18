@@ -13,6 +13,10 @@ export default Ember.Route.extend({
 
     rollback(changeset) {
       changeset.rollback();
+    },
+
+    cancel() {
+      this.transitionTo('entries');
     }
   }
 });

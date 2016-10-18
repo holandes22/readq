@@ -14,7 +14,7 @@ export default Factory.extend({
     return null;
   },
   createdAt() {
-    return faker.date.recent();
+    return faker.date.past();
   },
   tags() {
     let limit = faker.random.number({ min: 0, max: 5 });

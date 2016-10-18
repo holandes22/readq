@@ -18,9 +18,6 @@ export default Ember.Component.extend({
           this.attrs.save(changeset);
         }
       });
-    },
-    rollback() {
-      this.attrs.rollback(this.get('changeset'));
     }
   }
 });
