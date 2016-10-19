@@ -1,3 +1,7 @@
-.ui.main.container {
+.ui.main {
+  padding-top: 4.5rem;
+}
+
+.ui.fixed.sticky {
   padding-top: 4.5rem;
 }

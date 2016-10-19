@@ -15,7 +15,11 @@
   </div>
 {{/ui-modal}}
 
-{{actions-menu}}
+{{#ui-sticky}}
+  {{actions-menu}}
+{{/ui-sticky}}
+
+<br>
 
 <div class="ui very relaxed animated list">
 {{#each filteredEntries as |entry|}}
@@ -42,6 +46,6 @@
     </div>
   </div>
 {{/each}}
-{{outlet}}
-
 </div>
+
+{{outlet}}

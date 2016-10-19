@@ -1,16 +1,19 @@
-<div class="ui fluid vertical borderless menu">
-  <div class="item">
-    {{#link-to "entries.new" class="ui basic blue icon circular large button"}}
-      <i class="icon plus"></i>
-    {{/link-to}}
-  </div>
-  <div class="item">
-    {{tag-selector tags=selection.allTags}}
-  </div>
+<div class="ui menu">
   <div class="item">
     {{ui-checkbox
         label="Show archived"
         checked=selection.showArchived
         onChange=(action (mut selection.showArchived))}}
+  </div>
+  <div class="item">
+    {{tag-selector tags=selection.allTags}}
+  </div>
+  <div class="right menu">
+    <div class="item">
+      {{#link-to "entries.new" class="ui basic blue icon large button"}}
+        <i class="icon plus"></i>
+        New
+      {{/link-to}}
+    </div>
   </div>
 </div>

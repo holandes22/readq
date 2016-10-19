@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
       }
 
       if (filterTags.length > 0) {
-        result = result && _array.intersection(filterTags, entry.get('tags')).length > 0;
+        result = result && _array.difference(filterTags, entry.get('tags')).length === 0;
       }
       return result;
     });
