@@ -17,8 +17,6 @@
 
 {{actions-menu}}
 
-<br>
-
 <div class="ui very relaxed animated list">
 {{#each filteredEntries as |entry|}}
   <div class="item">
@@ -32,7 +30,7 @@
     </div>
     <i class="{{if entry.archived 'archive' 'linkify'}} large icon"></i>
     <div class="content">
-      <a class="header">{{entry.link}}</a>
+      <a href="{{entry.link}}" target="_blank" class="header">{{entry.link}}</a>
       <div class="description">{{if entry.notes entry.notes 'No description'}}</div>
       Created {{moment-from-now entry.createdAt}} |
 

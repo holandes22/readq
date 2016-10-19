@@ -4,7 +4,7 @@ import _array from 'lodash/array';
 export default Ember.Controller.extend({
   selection: Ember.inject.service(),
 
-  filteredEntries: Ember.computed('selection.filterTags', 'selection.showArchived', function() {
+  filteredEntries: Ember.computed('selection.{filterTags,showArchived}', 'model.@each.{archived,tags}', function() {
     let filterTags = this.get('selection.filterTags'),
         showArchived = this.get('selection.showArchived');
 
