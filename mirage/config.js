@@ -9,4 +9,20 @@ export default function() {
   this.get('/entries/:id');
   this.patch('/entries/:id');
   this.delete('/entries/:id');
+
+  this.get('/tags', (schema) => {
+    let tags = [];
+    let entries = schema.entries.all();
+
+    tags = entries.map((entry) => {
+      return entry.tags;
+    });
+
+    tags = [].concat(...tags);
+    tags = new Set(tags);
+    window.console.log(tags);
+
+    return [...tags];
+
+  });
 }

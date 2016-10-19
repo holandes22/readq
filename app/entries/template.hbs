@@ -1,5 +1,3 @@
-{{link-to "New" "entries.new"}}
-
 {{#ui-modal class="basic confirm" onApprove=(route-action 'approveModal') onDeny=(route-action 'denyModal')}}
 <i class="close icon"></i>
 <div class="header">Remove entry?</div>
@@ -17,6 +15,18 @@
   </div>
 {{/ui-modal}}
 
+<div class="ui fluid vertical borderless menu">
+  <div class="item">
+    {{#link-to "entries.new" class="ui basic blue icon circular large button"}}
+      <i class="icon plus"></i>
+    {{/link-to}}
+  </div>
+    {{tag-selector tags=selection.allTags}}
+
+</div>
+
+<br>
+
 <div class="ui very relaxed animated list">
 {{#each model as |entry|}}
   <div class="item">
@@ -31,7 +41,7 @@
     <i class="{{if entry.archived 'archive' 'linkify'}} large icon"></i>
     <div class="content">
       <a class="header">{{entry.link}}</a>
-      <div class="description">{{entry.notes}}</div>
+      <div class="description">{{if entry.notes entry.notes 'No description'}}</div>
       Created {{moment-from-now entry.createdAt}} |
 
       {{#each entry.tags as |tag|}}

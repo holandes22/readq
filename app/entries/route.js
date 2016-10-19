@@ -1,10 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  selection: Ember.inject.service(),
   entryToDelete: null,
 
+  afterModel() {
+    this.get('selection').refreshAllTags();
+  },
+
   model() {
-    return this.store.findAll('entry');
+    return this.store.findAll('entry').then((entries) => {
+      return entries;
+    });
   },
 
   actions: {

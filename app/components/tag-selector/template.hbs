@@ -1,0 +1,9 @@
+{{#power-select-multiple
+  options=tags
+  loadingMessage="Fetching tags...."
+  selected=selected
+  onchange=(action (mut selected))
+  as |tag|
+}}
+  {{tag}}
+{{/power-select-multiple}}
