@@ -2,7 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   store: Ember.inject.service(),
+  showArchived: false,
   allTags: [],
+  filterTags: [],
 
   refreshAllTags() {
     this.set('allTags', this.getAllTags());

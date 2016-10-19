@@ -15,20 +15,12 @@
   </div>
 {{/ui-modal}}
 
-<div class="ui fluid vertical borderless menu">
-  <div class="item">
-    {{#link-to "entries.new" class="ui basic blue icon circular large button"}}
-      <i class="icon plus"></i>
-    {{/link-to}}
-  </div>
-    {{tag-selector tags=selection.allTags}}
-
-</div>
+{{actions-menu}}
 
 <br>
 
 <div class="ui very relaxed animated list">
-{{#each model as |entry|}}
+{{#each filteredEntries as |entry|}}
   <div class="item">
     <div class="right floated content">
       <div class="ui red icon button" onclick={{route-action 'openModal' 'confirm' entry}}>
