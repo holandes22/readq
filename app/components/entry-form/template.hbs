@@ -29,7 +29,7 @@
     {{validated-input propertyName="tags" changeset=changeset transform=csvToArray}}
   </div>
 
-  <button class="ui blue button" data-test-save-btn {{action "save"}}>Save</button>
+  <button class="ui blue button {{if changeset.isInvalid 'disabled'}}" data-test-save-btn {{action "save"}}>Save</button>
   <button class="ui blue button" data-test-cancel-btn {{action (route-action "cancel")}}>
     Cancel
   </button>

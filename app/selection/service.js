@@ -22,7 +22,7 @@ export default Ember.Service.extend({
     let tags = [];
     return this.get('store').findAll('entry').then((entries) => {
       tags = entries.map((entry) => {
-        return entry.get('tags');
+        return entry.get('tags') || [];
       });
       return this.removeDups(this.flatten(tags));
     });
