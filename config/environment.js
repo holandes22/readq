@@ -17,7 +17,7 @@ module.exports = function(environment) {
       providers: {
         'github-oauth2': {
           apiKey: '1e5545bfcbdcba6e49df',
-
+          scope: 'user:email',
         }
       }
     },
