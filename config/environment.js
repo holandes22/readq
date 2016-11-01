@@ -13,6 +13,15 @@ module.exports = function(environment) {
       }
     },
 
+    torii: {
+      providers: {
+        'github-oauth2': {
+          apiKey: '1e5545bfcbdcba6e49df',
+
+        }
+      }
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
