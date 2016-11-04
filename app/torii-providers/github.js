@@ -3,6 +3,12 @@ import GitHubOauth2Provider from 'torii/providers/github-oauth2';
 
 export default GitHubOauth2Provider.extend({
   ajax: Ember.inject.service(),
+  session: Ember.inject.service(),
+
+  fetch(data) {
+    return data;
+  },
+
   open() {
     return this._super().then(toriiData => {
       const authCode = toriiData.authorizationCode;
@@ -10,8 +16,9 @@ export default GitHubOauth2Provider.extend({
 
       return this.get('ajax').request(serverUrl)
         .then((data) => {
-          toriiData.accessToken = data.token;
-          toriiData.myUser = data.user;
+          // This is the key expected by simple-auth OAuth2Bearer authorizer
+          toriiData['access_token'] = data.token;
+          this.get('session').set('data.currentUser', data.user);
           return toriiData;
         });
     });

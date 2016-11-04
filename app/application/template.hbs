@@ -1,7 +1,14 @@
 <div class="ui inverted large top fixed menu">
   <div class="right menu">
     <div class="item">
-      <a class="ui inverted button" {{action "login"}}>Log in</a>
+      <a class="ui inverted button">{{session.data.currentUser.email}}</a>
+    </div>
+    <div class="item">
+      {{#if session.isAuthenticated}}
+        <a class="ui inverted button" {{action "invalidateSession"}}>Logout</a>
+      {{else}}
+        <a class="ui inverted button" {{action "authenticateSession"}}>Login</a>
+      {{/if}}
     </div>
   </div>
 </div>

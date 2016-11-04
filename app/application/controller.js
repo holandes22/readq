@@ -3,12 +3,17 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   selection: Ember.inject.service(),
   torii: Ember.inject.service(),
+  session: Ember.inject.service(),
 
   actions: {
-    login() {
-      return this.get('torii').open('github').then(data => {
-        window.console.log('DATA', data);
+    invalidateSession() {
+      let session = this.get('session');
+      session.invalidate().then(() => {
+        session.set('data.currentUser', null);
       });
+    },
+    authenticateSession() {
+      this.get('session').authenticate('authenticator:torii', 'github');
     }
   }
 });
