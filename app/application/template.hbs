@@ -1,18 +1,16 @@
 <div class="ui inverted large top fixed menu">
+  {{#link-to "entries" class="item"}}
+    <i class="newspaper big icon"></i>
+  {{/link-to}}
+{{#if session.isAuthenticated}}
   <div class="right menu">
+    <div class="item">{{session.data.currentUser.email}}</div>
     <div class="item">
-      <a class="ui inverted button">{{session.data.currentUser.email}}</a>
-    </div>
-    <div class="item">
-      {{#if session.isAuthenticated}}
-        <a class="ui inverted button" {{action "invalidateSession"}}>Logout</a>
-      {{else}}
-        <a class="ui inverted button" {{action "authenticateSession"}}>Login</a>
-      {{/if}}
+      <a class="ui inverted button" {{action "invalidateSession"}}>Logout</a>
     </div>
   </div>
+{{/if}}
 </div>
-
 
 <div class="ui main container">
 {{outlet}}
