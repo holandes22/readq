@@ -1,6 +1,8 @@
+import ENV from 'readq/config/environment';
+
 export default function() {
 
-  this.urlPrefix = 'http://localhost:4000';
+  this.urlPrefix = ENV.APP.host;
 
   this.get('/auth/github/callback', () => {
     return {user: { email: 'user@example.com' }, token: 'aaafff'};
