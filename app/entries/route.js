@@ -11,8 +11,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   model() {
-    return this.store.findAll('entry').then((entries) => {
-      return entries;
+    return this.store.findAll('entry').catch(error => {
+      this.send('error', error);
     });
   },
 
@@ -26,6 +26,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       return this.get('entryToDelete').destroyRecord().finally(() => {
         this.set('entryToDelete', null);
         return true;
+      }).catch(error => {
+        this.send('error', error);
       });
     },
 

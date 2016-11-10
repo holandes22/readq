@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('entries.new', { path: 'entries/new' });
   this.route('entries.entry.edit', { path: 'entries/:entry_id/edit' });
   this.route('login');
+  this.route('not-found', { path: '*path' });
 });
 
 export default Router;

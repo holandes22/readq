@@ -25,8 +25,11 @@ export default Ember.Route.extend({
       let attrs = ['link', 'archived', 'notes', 'createdAt', 'tags'];
       let hash = changeset.getProperties(attrs);
 
-      this.store.createRecord('entry', hash).save();
-      this.transitionTo('entries');
+      this.store.createRecord('entry', hash).save().then(() => {
+        this.transitionTo('entries');
+      }).catch(error => {
+        this.send('error', error);
+      });
     },
 
     rollback(changeset) {

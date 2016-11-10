@@ -1,0 +1,11 @@
+<div class="ui error message">
+  <div class="header">
+    An error occurred
+  </div>
+  <ul class="list">
+    <li><b>Detail:</b> {{info.detail}}</li>
+    {{#if info.status}}
+      <li><b>Status:</b> {{info.status}}</li>
+    {{/if}}
+  </ul>
+</div>

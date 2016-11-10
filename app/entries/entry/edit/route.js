@@ -15,8 +15,11 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      changeset.save();
-      this.transitionTo('entries');
+      changeset.save().then(() => {
+        this.transitionTo('entries');
+      }).catch(error => {
+        this.send('error', error);
+      });
     },
 
     rollback(changeset) {
