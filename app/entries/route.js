@@ -4,6 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   selection: Ember.inject.service(),
+  flashMessages: Ember.inject.service(),
   entryToDelete: null,
 
   afterModel() {
@@ -25,6 +26,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     approveModal() {
       return this.get('entryToDelete').destroyRecord().finally(() => {
         this.set('entryToDelete', null);
+        this.get('flashMessages').info('Entry deleted');
         return true;
       }).catch(error => {
         this.send('error', error);

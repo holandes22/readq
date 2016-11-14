@@ -13,5 +13,17 @@
 </div>
 
 <div class="ui main container">
+{{#each flashMessages.queue as |flash|}}
+  {{#flash-message flash=flash as |component flash|}}
+    {{#if flash.componentName}}
+      {{component flash.componentName content=flash.content}}
+    {{else}}
+      <div class="ui {{flash.type}} icon message">
+        <i class="info icon"></i>
+        <div class="header">{{flash.message}}</div>
+      </div>
+    {{/if}}
+  {{/flash-message}}
+{{/each}}
 {{outlet}}
 </div>
