@@ -7,6 +7,8 @@ export default Ember.Route.extend({
     authenticateSession() {
       this.get('session').authenticate('authenticator:torii', 'github').then(() => {
         this.transitionTo('entries');
+      }).catch(error => {
+        this.send('error', error);
       });
     }
   }

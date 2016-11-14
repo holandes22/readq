@@ -13,7 +13,7 @@ export default Factory.extend({
     }
     return null;
   },
-  createdAt() {
+  insertedAt() {
     return faker.date.past();
   },
   tags() {

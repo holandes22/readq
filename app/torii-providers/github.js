@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import GitHubOauth2Provider from 'torii/providers/github-oauth2';
+import ENV from 'readq/config/environment';
 
 export default GitHubOauth2Provider.extend({
   ajax: Ember.inject.service(),
@@ -12,7 +13,7 @@ export default GitHubOauth2Provider.extend({
   open() {
     return this._super().then(toriiData => {
       const authCode = toriiData.authorizationCode;
-      const serverUrl =  `http://localhost:4000/auth/github/callback?code=${authCode}`;
+      const serverUrl =  `${ENV.APP.host}/auth/github/callback?code=${authCode}`;
 
       return this.get('ajax').request(serverUrl)
         .then((data) => {

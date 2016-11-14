@@ -21,8 +21,6 @@
 {{/ui-modal}}
 
 
-<br>
-
 <div class="ui very relaxed animated list">
 {{#each filteredEntries as |entry|}}
   <div class="item">
@@ -38,7 +36,7 @@
     <div class="content">
       <a href="{{entry.link}}" target="_blank" class="header">{{entry.link}}</a>
       <div class="description">{{if entry.notes entry.notes 'No description'}}</div>
-      Created {{moment-from-now entry.createdAt}} |
+      Created {{moment-from-now entry.insertedAt}} |
 
       {{#each entry.tags as |tag|}}
         <div class="ui violet basic label">{{tag}}</div>

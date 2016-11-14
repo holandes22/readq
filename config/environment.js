@@ -29,7 +29,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      host: "http://localhost:4000"
+      host: 'http://localhost:4000'
     }
   };
 
@@ -53,7 +53,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = 'https://todo-change.com';
+    ENV.APP.host = 'https://hidden-chamber-40537.herokuapp.com';
 
   }
 

@@ -10,7 +10,7 @@ export default Ember.Route.extend({
       link: '',
       archived: false,
       notes: '',
-      createdAt: '',
+      insertedAt: '',
       tags: []
     };
   },
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      let attrs = ['link', 'archived', 'notes', 'createdAt', 'tags'];
+      let attrs = ['link', 'archived', 'notes', 'insertedAt', 'tags'];
       let hash = changeset.getProperties(attrs);
 
       this.store.createRecord('entry', hash).save().then(() => {
