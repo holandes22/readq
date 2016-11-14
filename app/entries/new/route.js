@@ -16,7 +16,7 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
-    let changeset = new Changeset(model, lookupValidator(EntryValidations));
+    let changeset = new Changeset(model, lookupValidator(EntryValidations), EntryValidations);
     controller.set('changeset', changeset);
   },
 
