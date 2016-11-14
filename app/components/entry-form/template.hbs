@@ -20,13 +20,13 @@
 
   <div class="field">
     <label>Tags (csv)</label>
-    {{!-- TODO: yield hash with input and err message
-    <div class="ui right labeled left icon input">
-    <i class="tags icon"></i>
-    {{validated-input propertyName="tags" changeset=changeset transform=csvToArray}}
-    </div>
-    --}}
-    {{validated-input propertyName="tags" changeset=changeset transform=csvToArray}}
+    {{#validated-input propertyName="tags" changeset=changeset transform=csvToArray as |validatedInput|}}
+      <div class="ui left icon input">
+      <i class="tags icon"></i>
+        {{validatedInput.input}}
+      </div>
+      {{validatedInput.error}}
+    {{/validated-input}}
   </div>
 
   <button class="ui blue button {{if changeset.isInvalid 'disabled'}}" data-test-save-btn {{action "save"}}>Save</button>

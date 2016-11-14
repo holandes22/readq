@@ -11,7 +11,7 @@ export default Factory.extend({
     if (i % 3 === 0) {
       return faker.lorem.sentence();
     }
-    return null;
+    return "";
   },
   insertedAt() {
     return faker.date.past();

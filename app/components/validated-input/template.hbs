@@ -1,12 +1,9 @@
-{{one-way-input
-  value=(get changeset propertyName)
-  update=(action "update")}}
-{{#if (get changeset.error propertyName)}}
-<div class="ui error message">
-  <ul>
-  {{#each (get (get changeset.error propertyName) "validation") as |error|}}
-    <li>{{error}}</li>
-  {{/each}}
-  </ul>
-</div>
+{{#if hasBlock}}
+  {{yield (hash
+      input=(component "one-way-input" value=(get changeset propertyName) update=(action "update"))
+      error=(component "validated-input/error" changeset=changeset propertyName=propertyName)
+    )}}
+{{else}}
+  {{one-way-input value=(get changeset propertyName) update=(action "update")}}
+  {{validated-input/error changeset=changeset propertyName=propertyName}}
 {{/if}}
