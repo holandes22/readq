@@ -2,14 +2,16 @@
   {{#link-to "entries" class="item"}}
     <i class="newspaper big icon"></i>
   {{/link-to}}
-  <div class="right menu">
-    {{#if (or FlexiLayout.isDesktop FlexiLayout.isHuge)}}
-    <div class="item">{{session.data.currentUser.email}}</div>
-    {{/if}}
-    <div class="item">
-      <a class="ui inverted button" {{action "invalidateSession"}}>Logout</a>
+  {{#if session.isAuthenticated}}
+    <div class="right menu">
+      {{#if (or FlexiLayout.isDesktop FlexiLayout.isHuge)}}
+        <div class="item">{{session.data.currentUser.email}}</div>
+      {{/if}}
+      <div class="item">
+        <a class="ui inverted button" {{action "invalidateSession"}}>Logout</a>
+      </div>
     </div>
-  </div>
+  {{/if}}
 </div>
 
 <div class="ui main container">
