@@ -12,10 +12,8 @@
           checked=selection.showArchived
           onChange=(action (mut selection.showArchived))}}
     </div>
-    {{#if selection.allTags.length}}
-      <div class="item">
-        {{tag-selector tags=selection.allTags}}
-      </div>
-    {{/if}}
+    <div class="item">
+      {{tag-selector tags=selection.allTags}}
+    </div>
   </div>
 </div>
