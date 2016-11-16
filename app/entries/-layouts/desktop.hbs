@@ -3,6 +3,7 @@
   This template will be rendered with the route controller's
   context when `device/layout.isEntries/desktop` is true.
 --}}
+
 {{#ui-modal class="basic confirm" onApprove=(route-action 'approveModal') onDeny=(route-action 'denyModal')}}
 <i class="close icon"></i>
 <div class="header">Remove entry?</div>
@@ -20,7 +21,6 @@
   </div>
 {{/ui-modal}}
 
-
 <div class="ui very relaxed animated list">
 {{#each filteredEntries as |entry|}}
   <div class="item">
@@ -35,8 +35,10 @@
     <i class="{{if entry.archived 'archive' 'linkify'}} large icon"></i>
     <div class="content">
       <a href="{{entry.link}}" target="_blank" class="header">{{entry.link}}</a>
-      <div class="description">{{if entry.notes entry.notes 'No description'}}</div>
-      Created {{moment-from-now entry.insertedAt}} |
+      {{#if (or FlexiLayout.isDesktop FlexiLayout.isHuge)}}
+        <div class="description">{{if entry.notes entry.notes 'No description'}}</div>
+        Created {{moment-from-now entry.insertedAt}} |
+      {{/if}}
 
       {{#each entry.tags as |tag|}}
         <div class="ui violet basic label">{{tag}}</div>
@@ -50,4 +52,4 @@
 
 {{outlet}}
 
-{{actions-menu}}
+{{actions-menu isDesktop=(or FlexiLayout.isDesktop FlexiLayout.isHuge)}}
