@@ -9,7 +9,7 @@ module.exports = function(deployTarget) {
       accessKeyId: process.env.AWS_KEY,
       secretAccessKey: process.env.AWS_SECRET,
       bucket: 'readq',
-      region: 'us-west-2'
+      region: 'us-east-1'
     }
   };
 
