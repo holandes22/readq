@@ -3,8 +3,16 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   store: Ember.inject.service(),
   showArchived: false,
-  allTags: [],
   filterTags: [],
+
+  allTags: Ember.computed('showArchived', {
+    get() {
+      return this.getAllTags();
+    },
+    set(key, value) {
+     return value;
+    }
+  }),
 
   refreshAllTags() {
     this.set('allTags', this.getAllTags());
@@ -19,13 +27,14 @@ export default Ember.Service.extend({
   },
 
   getAllTags() {
-    let tags = [];
-    return this.get('store').findAll('entry').then((entries) => {
-      tags = entries.map((entry) => {
-        return entry.get('tags') || [];
-      });
-      return this.removeDups(this.flatten(tags));
+    let entries = this.get('store').peekAll('entry');
+    let showArchived = this.get('showArchived');
+    let tags = entries.map((entry) => {
+      if (entry.get('archived') && !showArchived) {
+        return [];
+      }
+      return entry.get('tags') || [];
     });
-
+    return this.removeDups(this.flatten(tags));
   }
 });

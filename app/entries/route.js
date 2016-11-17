@@ -7,10 +7,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   flashMessages: Ember.inject.service(),
   entryToDelete: null,
 
-  afterModel() {
-    this.get('selection').refreshAllTags();
-  },
-
   model() {
     return this.store.findAll('entry').catch(error => {
       this.send('error', error);
